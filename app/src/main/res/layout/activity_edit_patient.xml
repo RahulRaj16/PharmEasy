@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sett_bg"
+    tools:context="com.example.zerovirus.Activity.EditPatientActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="183dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/edit_information"
+                android:textColor="#FCF4FCED"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.037"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/txt_patient"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="17dp"
+                android:background="@color/hintback"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/patient_name"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textColorHighlight="#2FFFFFFF"
+                android:textColorHint="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <EditText
+                android:id="@+id/mobile_No"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/txtpatient"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/hintback"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/mobile"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtpatient" />
+
+            <EditText
+                android:id="@+id/txt_address"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="10dp"
+                android:background="#48000000"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/address_reg"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtdiagnosis" />
+
+            <EditText
+                android:id="@+id/txt_diagnosis"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="13dp"
+                android:background="#48000000"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:gravity="start|top"
+                android:hint="@string/diagnosis"
+                android:inputType="textMultiLine"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mobileNo" />
+
+
+            <EditText
+                android:id="@+id/txt_Prescription"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="30dp"
+                android:background="#48000000"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/addMedicine"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+
+            <Button
+                android:id="@+id/btn_editPatient"
+                android:layout_width="206dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="96dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/edit_information"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/med4"
+                app:layout_constraintVertical_bias="0.05" />
+
+            <Button
+                android:id="@+id/btn_deletePatient"
+                android:layout_width="206dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="96dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:background="@android:color/holo_red_light"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/delete"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

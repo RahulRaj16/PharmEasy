@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.zerovirus.Activity.editinfoActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/sett_bg"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="417dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/edit_information"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/thirtyfour"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.14" />
+
+
+            <EditText
+                android:id="@+id/txtpatient"
+                android:layout_width="@dimen/form_field_width"
+                android:layout_height="@dimen/button_and_form_field_height"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="276dp"
+                android:background="@color/formfieldbg"
+                android:drawableLeft="@drawable/ic_username"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/username"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/form_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/mobile"
+                android:layout_width="@dimen/form_field_width"
+                android:layout_height="@dimen/button_and_form_field_height"
+                android:layout_above="@+id/confirm_pw"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="32dp"
+                android:background="@color/formfieldbg"
+                android:drawableLeft="@drawable/ic_mobile"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/mobile"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/form_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtpatient" />
+
+
+            <EditText
+                android:id="@+id/txtAddress"
+                android:layout_width="@dimen/form_field_width"
+                android:layout_height="@dimen/button_and_form_field_height"
+                android:layout_above="@+id/mobile"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="32dp"
+                android:background="@color/formfieldbg"
+                android:drawableLeft="@drawable/ic_location"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/address_reg"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/form_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mobile" />
+
+
+            <Button
+                android:id="@+id/button_update"
+                android:layout_width="@dimen/twosix"
+                android:layout_height="@dimen/button_and_form_field_height"
+                android:layout_marginTop="48dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/update_info"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

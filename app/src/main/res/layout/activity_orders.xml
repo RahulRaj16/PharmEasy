@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.zerovirus.Activity.MainActivity">
+
+    <TextView
+        android:id="@+id/txtOrdersTitle"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:fontFamily="@font/montserrat"
+        android:paddingStart="15dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="0dp"
+        android:text="@string/OrdersTitle"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <SearchView
+        android:id="@+id/txt_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey" />
+
+    <Button
+        android:id="@+id/btnDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="DEMO" />
+
+    <Button
+        android:id="@+id/btnShowOrders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/showAllOrders" />
+
+    <ListView
+        android:id="@+id/listViewOrders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="10dp"></ListView>
+
+</LinearLayout>

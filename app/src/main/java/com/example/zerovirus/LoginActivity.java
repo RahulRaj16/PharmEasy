@@ -1,0 +1,80 @@
+package com.example.zerovirus;
+
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+
+public class LoginActivity extends AppCompatActivity {
+
+    EditText textInputUsername;
+    EditText textInputPassword;
+    Button mButtonLogin;
+    TextView mTextViewRegister;
+    SharedPreferences pref;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        pref = getSharedPreferences("user_details",MODE_PRIVATE);
+        textInputUsername = (EditText)findViewById(R.id.edittext_username);
+        textInputPassword = (EditText)findViewById(R.id.edittext_password);
+        mButtonLogin = (Button)findViewById(R.id.button_login);
+        mTextViewRegister = (TextView)findViewById(R.id.textview_register);
+        mTextViewRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(registerIntent);
+            }
+        });
+        mButtonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if (validateUsername()== true &&  validatePassword() == true  ){
+                        Intent loginIntent = new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(loginIntent);
+                }
+            }
+        });
+    }
+
+    private boolean validateUsername() {
+        String usernameInput = textInputUsername.getText().toString().trim();
+        String input;
+        if (usernameInput.isEmpty()) {
+           input =  "Username cannot be empty";
+           Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
+           return  false;
+        }
+        else {
+            return true;
+        }
+
+    }
+
+    private boolean validatePassword() {
+        String passwordInput = textInputPassword.getEditableText().toString().trim();
+        String input;
+
+        if (passwordInput.isEmpty()) {
+            input =  "Password cannot be empty";
+            Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
+            return  false;
+        }
+        else {
+            return true;
+        }
+
+    }
+
+}

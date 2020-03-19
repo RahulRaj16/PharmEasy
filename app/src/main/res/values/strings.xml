@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">ZeroVirus</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="not_registered">Not registered?</string>
+    <string name="register">Register</string>
+    <string name="already_registered">Already registered?</string>
+    <string name="doctor_name">Doctor"'"s Name</string>
+
+    <string name="title_activity_hospital">PharmEasy</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="reg_password">Password</string>
+    <string name="mobile">Mobile</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="update_info">Update</string>
+    <string name="address_reg">Address</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="update_password">Update Password</string>
+    <string name="edit_information">Edit Information</string>
+    <string name="show">Show >></string>
+    <string name="orders">Orders</string>
+    <string name="medicine">Medicine</string>
+    <string name="delivery">Delivery</string>
+    <string name="feedback">Feedback</string>
+    <string name="popMsg">Enter the medicine name.</string>
+    <string name="name">Name</string>
+    <string name="add">add</string>
+    <string name="delete">delete</string>
+    <string name="title_activity_patients">PatientsActivity</string>
+    <string name="add_patient">Add Patient</string>
+    <string name="patientlist">Patients List</string>
+    <string name="hosName">Apollo Hospitals</string>
+    <string name="hos_email">pres.admin@apollo.lk</string>
+    <string name="patient_name">Patient Name</string>
+    <string name="diagnosis">Diagnosis</string>
+    <string name="addMedicine">Add Medicine</string>
+    <string name="patient_details">Patient Details</string>
+    <string name="Feed_btn">GO!</string>
+    <string name="feedName">Name</string>
+    <string name="feedMail">Email</string>
+    <string name="feedMessage">Message</string>
+    <string name="feedSubmit">Submit</string>
+    <string name="feed">Feedback</string>
+    <string name="log_out">Log out</string>
+    <string name="showAllOrders">SHOW ALL ORDERS</string>
+    <string name="OrdersTitle">Orders List</string>
+    <string name="MoveOrder">Move To Delivery</string>
+    <string name="MedicineTitle">Medicine List</string>
+    <string name="DeliveryTitle">Delivery List</string>
+    <string name="Edit">Edit</string>
+    <string name="Remove">Remove</string>
+    <string-array name="status">
+        <item>Dispatched</item>
+        <item>To Be Dispatched</item>
+        <item>Delivered</item>
+    </string-array>
+    <string-array name="user">
+<!--        <item>Patient</item>-->
+        <item>Pharmacy</item>
+        <item>Hospital</item>
+    </string-array>
+
+
+</resources>
