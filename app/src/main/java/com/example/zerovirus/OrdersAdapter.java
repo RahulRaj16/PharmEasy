@@ -1,10 +1,8 @@
-package com.example.pharmeasy.Adapter;
+package com.example.zerovirus.Adapter;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pharmeasy.Database.DBHelper;
-import com.example.pharmeasy.Model.Orders;
-import com.example.pharmeasy.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.Model.Orders;
+import com.example.zerovirus.R;
 
 import java.util.List;
 
