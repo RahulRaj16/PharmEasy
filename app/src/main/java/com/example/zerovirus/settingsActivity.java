@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-public class settingsActivity6 extends AppCompatActivity {
+public class settingsActivity extends AppCompatActivity {
 
     CardView editInfoGrid;
     CardView UpdatePwGrid;
