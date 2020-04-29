@@ -20,7 +20,7 @@ import java.util.List;
 
 public class OrdersActivity extends AppCompatActivity {
 
-    public static final String DATABASE_NAME = "PharmEasyDB";
+    public static final String DATABASE_NAME = "ZeroVirusDB";
 
     SQLiteDatabase mDatabase;
     ListView listViewOrders;
