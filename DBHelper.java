@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "PharmEasyDB";
+    public static final String DATABASE_NAME = "ZeroVirusDB";
     private static final String TAG ="DBHelper" ;
 
     public DBHelper(Context context) {
