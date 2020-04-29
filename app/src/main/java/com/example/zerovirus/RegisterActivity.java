@@ -13,10 +13,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class RegisterActivity77 extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
 
-    TextView mTextViewLogin888;
+    TextView mTextViewLogin;
     EditText textInputUsername;
     EditText textInputPassword;
     EditText textInputConfirmPassword;
