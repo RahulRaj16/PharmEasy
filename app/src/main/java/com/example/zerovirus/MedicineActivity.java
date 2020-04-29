@@ -28,7 +28,7 @@ public class MedicineActivity extends AppCompatActivity {
         button_medicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent add_medicine_intent = new Intent( MedicineActivity.this, AddMedicineActivity.class);
+                Intent add_medicine_intent = new Intent( MedicineActivity.this, AddMedicineActivity8.class);
                 startActivity(add_medicine_intent);
             }
         });
