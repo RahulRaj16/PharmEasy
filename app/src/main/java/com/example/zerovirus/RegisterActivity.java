@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class RegisterActivity7 extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
 
     TextView mTextViewLogin;
