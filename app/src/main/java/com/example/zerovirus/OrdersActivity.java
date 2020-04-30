@@ -1,9 +1,8 @@
-package com.example.pharmeasy.Activity;
+package com.example.zerovirus.Activity;
 
 import android.app.SearchManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +10,11 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.example.pharmeasy.Adapter.OrdersAdapter;
-import com.example.pharmeasy.Model.Orders;
-import com.example.pharmeasy.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.zerovirus.Adapter.OrdersAdapter;
+import com.example.zerovirus.Model.Orders;
+import com.example.zerovirus.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -188,7 +189,7 @@ public class OrdersActivity extends AppCompatActivity {
         if (!(cursorOrders.moveToFirst()) || cursorOrders.getCount() == 0) {
             Toast.makeText(getApplicationContext(), "No results found", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(),"Search results",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Search results", Toast.LENGTH_LONG).show();
         }
 
 
