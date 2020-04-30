@@ -1,6 +1,5 @@
-package com.example.pharmeasy.Activity;
+package com.example.zerovirus.Activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -9,9 +8,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.pharmeasy.Database.DBHelper;
-import com.example.pharmeasy.Model.Medicine;
-import com.example.pharmeasy.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.Model.Medicine;
+import com.example.zerovirus.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
