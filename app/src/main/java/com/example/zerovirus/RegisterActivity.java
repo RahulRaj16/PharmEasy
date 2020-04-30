@@ -1,4 +1,4 @@
-package com.example.zerovirus;
+package com.example.zerovirus.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -24,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText textInputAddress;
     Button mButtonRegister;
     Spinner mySpinner;
-
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(myAdapter);
 
+        dbHelper = new DBHelper(this);
+
         mTextViewLogin = (TextView) findViewById(R.id.textview_login);
 
         mTextViewLogin.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (validateUsername() == true && validatePassword() == true && validateMobile() == true && validateConfirmPassword()== true ){
+                    addUser();
                     Intent RegisterIntent = new Intent(RegisterActivity.this,LoginActivity.class);
                     startActivity(RegisterIntent);
                     Toast.makeText(getApplicationContext(),"Successfully Registered!", Toast.LENGTH_LONG).show();
@@ -72,6 +77,18 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+
+    private void addUser(){
+
+        String uname = textInputUsername.getText().toString().trim();
+        String pwd = textInputPassword.getText().toString().trim();
+        String mob = textInputMobile.getText().toString().trim();
+        String address = textInputAddress.getText().toString().trim();
+        String type = mySpinner.getSelectedItem().toString().trim();
+
+
+        dbHelper.addUser(uname,pwd,mob,address,type);
+    }
 
     private Boolean validateUsername() {
         String usernameInput = textInputUsername.getText().toString().trim();

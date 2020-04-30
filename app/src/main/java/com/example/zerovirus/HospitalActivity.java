@@ -1,4 +1,4 @@
-package com.example.zerovirus;
+package com.example.zerovirus.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,23 +15,32 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-
 public class HospitalActivity extends AppCompatActivity
+
+
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView navheadertitle;
     String x;
+    DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital);
         Toolbar toolbar = findViewById(R.id.toolbar);
+         dbHelper = new DBHelper(this);
+
+
+
 
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +60,7 @@ public class HospitalActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         navheadertitle =  (TextView)  hView.findViewById(R.id.user_nav);
-        x = "Welcome "+ "!";
+        x = "Welcome "+ "\n"+ dbHelper.getUsername() + "!";
         navheadertitle.setText(x);
         Toast.makeText(getApplicationContext(),x, Toast.LENGTH_LONG);
 
@@ -127,6 +136,7 @@ public class HospitalActivity extends AppCompatActivity
             startActivity(settingsIntent);
 
         } else if (id == R.id.nav_logout) {
+            dbHelper.changeuser();
             Intent logIntent = new Intent(HospitalActivity.this, LoginActivity.class);
             startActivity(logIntent);
             Toast.makeText(getApplicationContext(),"Successfully Logged Out", Toast.LENGTH_LONG).show();

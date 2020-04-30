@@ -1,4 +1,4 @@
-package com.example.zerovirus;
+package com.example.zerovirus.Activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,7 +18,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -28,11 +29,13 @@ public class MainActivity extends AppCompatActivity
     private Button button;
     TextView navheadertitle;
     String x;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dbHelper = new DBHelper(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -93,7 +96,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         navheadertitle =  (TextView)  hView.findViewById(R.id.user_nav);
-        x = "Welcome " + "!";
+        x = "Welcome "+ "\n"+dbHelper.getUsername() + "!";
         navheadertitle.setText(x);
         Toast.makeText(getApplicationContext(),x, Toast.LENGTH_LONG);
 
@@ -171,6 +174,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(settingsIntent);
 
         } else if (id == R.id.nav_logout) {
+            dbHelper.changeuser();
             Intent logIntent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(logIntent);
             Toast.makeText(getApplicationContext(),"Successfully Logged Out", Toast.LENGTH_LONG).show();

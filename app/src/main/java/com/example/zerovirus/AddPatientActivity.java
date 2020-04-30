@@ -1,4 +1,4 @@
-package com.example.zerovirus;
+package com.example.zerovirus.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
 
 public class AddPatientActivity extends AppCompatActivity {
     Button button_register;
     EditText name,addrs, diag, pres ;
     EditText phone;
+    DBHelper dbHelper=new DBHelper(this) ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,7 @@ public class AddPatientActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nameIsfull()==true && addressIsfull()== true && mobileIsfull() == true && ValidatePhoneNo()==true && diagnosisIsfull() == true && prescriptionIsfull() == true){
+                    addPrescription();
                     Intent patientList = new Intent(AddPatientActivity.this,PatientsActivity.class);
                     startActivity(patientList);
                 }
@@ -37,6 +42,23 @@ public class AddPatientActivity extends AppCompatActivity {
         });
     }
 
+    private void addPrescription(){
+      String pname= name.getText().toString().trim();
+      String paddress= addrs.getText().toString().trim();
+      String pphone= phone.getText().toString().trim();
+      String pdiagnosis= diag.getText().toString().trim();
+      String pprescription= pres.getText().toString().trim();
+
+        long result2 = dbHelper.addOrder(pname, pprescription, paddress, pphone);
+      long result = dbHelper.addPrescription(pname,pdiagnosis,paddress,pphone,pprescription);
+
+      if (result<0 && result2<0){
+          Toast.makeText(getApplicationContext(),"Failed to Add", Toast.LENGTH_LONG).show();
+      }else{
+          Toast.makeText(getApplicationContext(),"Successfully Added", Toast.LENGTH_LONG).show();
+      }
+
+    }
 
     private boolean nameIsfull(){
         String vname = name.getText().toString().trim();
