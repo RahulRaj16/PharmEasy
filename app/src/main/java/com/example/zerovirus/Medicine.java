@@ -1,4 +1,4 @@
-package com.example.pharmeasy.Model;
+package com.example.zerovirus.Model;
 
 public class Medicine {
     private String id;

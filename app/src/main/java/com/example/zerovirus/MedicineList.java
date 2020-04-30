@@ -1,4 +1,4 @@
-package com.example.pharmeasy.Model;
+package com.example.zerovirus.Model;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pharmeasy.R;
+import com.example.zerovirus.R;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
