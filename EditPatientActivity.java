@@ -1,15 +1,16 @@
-package com.example.pharmeasy.Activity;
+package com.example.zerovirus.Activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pharmeasy.Database.DBHelper;
-import com.example.pharmeasy.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
 
 public class EditPatientActivity extends AppCompatActivity {
     private static final String TAG = "EditPatientActivity";
@@ -50,7 +51,7 @@ public class EditPatientActivity extends AppCompatActivity {
                 if (nameIsfull()==true && addressIsfull()== true && mobileIsfull() == true && ValidatePhoneNo()==true && diagnosisIsfull() == true && prescriptionIsfull() == true) {
 
                     updatePatient();
-                    Toast.makeText(getApplicationContext(),"Updated Successfully",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Updated Successfully", Toast.LENGTH_LONG).show();
                     Intent add_intent = new Intent(EditPatientActivity.this, PatientsActivity.class);
                     startActivity(add_intent);
                 }
@@ -61,7 +62,7 @@ public class EditPatientActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dbHelper.deletePatient(sid,sname);
-                Toast.makeText(getApplicationContext(),"Deleted Successfully",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Deleted Successfully", Toast.LENGTH_LONG).show();
                 Intent add_intent = new Intent( EditPatientActivity.this, PatientsActivity.class);
                 startActivity(add_intent);
             }
@@ -86,7 +87,7 @@ public class EditPatientActivity extends AppCompatActivity {
         String vname = editname.getText().toString().trim();
 
         if (vname.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Name Field Cannot be Empty",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Name Field Cannot be Empty", Toast.LENGTH_LONG).show();
             return false;
         }else {
             return true;
@@ -98,7 +99,7 @@ public class EditPatientActivity extends AppCompatActivity {
         String vaddress = editaddress.getText().toString().trim();
 
         if (vaddress.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Address Field Cannot be Empty",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Address Field Cannot be Empty", Toast.LENGTH_LONG).show();
             return false;
         }else {
             return true;
@@ -110,7 +111,7 @@ public class EditPatientActivity extends AppCompatActivity {
         String vmobile = editmobile.getText().toString().trim();
 
         if (vmobile.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Phone Number Field Cannot be Empty",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Phone Number Field Cannot be Empty", Toast.LENGTH_LONG).show();
             return false;
         }else {
             return true;
@@ -122,7 +123,7 @@ public class EditPatientActivity extends AppCompatActivity {
         String vdiag = editdiag.getText().toString().trim();
 
         if (vdiag.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Diagnosis Field Cannot be Empty",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Diagnosis Field Cannot be Empty", Toast.LENGTH_LONG).show();
             return false;
         }else {
             return true;
@@ -134,7 +135,7 @@ public class EditPatientActivity extends AppCompatActivity {
         String vpres = editpres.getText().toString().trim();
 
         if (vpres.isEmpty()){
-            Toast.makeText(getApplicationContext(),"Prescription Field Cannot be Empty",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Prescription Field Cannot be Empty", Toast.LENGTH_LONG).show();
             return false;
         }else {
             return true;
@@ -150,7 +151,7 @@ public class EditPatientActivity extends AppCompatActivity {
         }
 
         else {
-            Toast.makeText(getApplicationContext(),"Invalid Phone number",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Invalid Phone number", Toast.LENGTH_LONG).show();
             return false;
         }
     }
