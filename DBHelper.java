@@ -1,4 +1,4 @@
-package com.example.pharmeasy.Database;
+package com.example.zerovirus.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,14 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import com.example.pharmeasy.Database.UsersMaster.Prescriptions;
-import com.example.pharmeasy.Database.UsersMaster.Orders;
-import com.example.pharmeasy.Database.UsersMaster.Delivery;
-
-import java.util.List;
+import com.example.zerovirus.Database.UsersMaster.Delivery;
+import com.example.zerovirus.Database.UsersMaster.Orders;
+import com.example.zerovirus.Database.UsersMaster.Prescriptions;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -94,7 +90,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public  void addUser(String userName,String password,String mobile,String address,String type){
+    public  void addUser(String userName, String password, String mobile, String address, String type){
 
         SQLiteDatabase db = getWritableDatabase();
 
@@ -144,14 +140,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public String getUsername() {
 
 
-        String [] projection = {
+        String[] projection = {
                 UsersMaster.Users.COLUMN_NAME_USERNAME
         };
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.query(UsersMaster.Users.TABLE_NAME,
                 projection,
                 UsersMaster.Users.COLUMN_NAME_CURRENT + " LIKE ? ",
-                new String []{"TRUE"},
+                new String[]{"TRUE"},
                 null, null, null);
 //        cursor.moveToFirst();
         String currentUsername ;
@@ -178,7 +174,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public String getMobile() {
 
 
-        String [] projection = {
+        String[] projection = {
                 UsersMaster.Users.COLUMN_NAME_MOBILE
         };
         SQLiteDatabase db = getWritableDatabase();
@@ -214,7 +210,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public String getAddress() {
 
 
-        String [] projection = {
+        String[] projection = {
                 UsersMaster.Users.COLUMN_NAME_ADDRESS
         };
         SQLiteDatabase db = getWritableDatabase();
@@ -245,7 +241,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public void changeinfo (String userName, String mobile,String address){
+    public void changeinfo (String userName, String mobile, String address){
         SQLiteDatabase db = getWritableDatabase();
 
 
@@ -303,7 +299,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public String getpwd() {
 
 
-        String [] projection = {
+        String[] projection = {
                 UsersMaster.Users.COLUMN_NAME_PASSWORD
         };
         SQLiteDatabase db = getWritableDatabase();
@@ -338,7 +334,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public String gettype() {
 
 
-        String [] projection = {
+        String[] projection = {
                 UsersMaster.Users.COLUMN_NAME_TYPE
         };
         SQLiteDatabase db = getWritableDatabase();
@@ -368,7 +364,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return currentUsername;
     }
 
-    public long addPrescription(String name,String diag, String adds,String phn,String pres){
+    public long addPrescription(String name, String diag, String adds, String phn, String pres){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -385,7 +381,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public long addOrder(String name,String pres, String adds,String phn){
+    public long addOrder(String name, String pres, String adds, String phn){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -483,7 +479,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public void deletePatient(int id,String name){
+    public void deletePatient(int id, String name){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + Prescriptions.TABLE_NAME + " WHERE "
                 +Prescriptions._ID + " = '" + id + "'" + " AND " + Prescriptions.COLUMN_NAME_PATIENTNAME +
@@ -494,7 +490,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    public  void addfeed(String name,String email,String message){
+    public  void addfeed(String name, String email, String message){
 
         SQLiteDatabase db = getWritableDatabase();
 
