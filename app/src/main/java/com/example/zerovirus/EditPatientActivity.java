@@ -1,4 +1,4 @@
-package com.example.zerovirus;
+package com.example.zerovirus.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +9,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
 
 public class EditPatientActivity extends AppCompatActivity {
     private static final String TAG = "EditPatientActivity";
     private Button button_register,button_delete;
     private EditText editname,editmobile,editaddress,editdiag,editpres;
+    DBHelper dbHelper;
 
     private String sname,saddress,sdiagnosis,sprescription, sphone;
     private int sid;
@@ -28,6 +31,7 @@ public class EditPatientActivity extends AppCompatActivity {
         editpres = (EditText)findViewById(R.id.txt_Prescription);
         button_delete = findViewById(R.id.btn_deletePatient);
         button_register =findViewById(R.id.btn_editPatient);
+        dbHelper = new DBHelper(this);
         Intent received = getIntent();
         sid = received.getIntExtra("id",-1);
         sname = received.getStringExtra("name");
@@ -45,6 +49,8 @@ public class EditPatientActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nameIsfull()==true && addressIsfull()== true && mobileIsfull() == true && ValidatePhoneNo()==true && diagnosisIsfull() == true && prescriptionIsfull() == true) {
+
+                    updatePatient();
                     Toast.makeText(getApplicationContext(),"Updated Successfully", Toast.LENGTH_LONG).show();
                     Intent add_intent = new Intent(EditPatientActivity.this, PatientsActivity.class);
                     startActivity(add_intent);
@@ -55,6 +61,7 @@ public class EditPatientActivity extends AppCompatActivity {
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dbHelper.deletePatient(sid,sname);
                 Toast.makeText(getApplicationContext(),"Deleted Successfully", Toast.LENGTH_LONG).show();
                 Intent add_intent = new Intent( EditPatientActivity.this, PatientsActivity.class);
                 startActivity(add_intent);
@@ -62,6 +69,20 @@ public class EditPatientActivity extends AppCompatActivity {
         });
     }
 
+
+    private void updatePatient()
+    {
+        String pname= editname.getText().toString().trim();
+        String paddress= editaddress.getText().toString().trim();
+        String pphone= editmobile.getText().toString().trim();
+        String pdiagnosis= editdiag.getText().toString().trim();
+        String pprescription= editpres.getText().toString().trim();
+        dbHelper.updatePatientname(pname,sid,sname);
+        dbHelper.updatePatientaddress(paddress,sid);
+        dbHelper.updatePatientmobile(pphone,sid);
+        dbHelper.updatePatientdiagnosis(pdiagnosis,sid);
+        dbHelper.updatePatientprescription(pprescription,sid);
+    }
     private boolean nameIsfull(){
         String vname = editname.getText().toString().trim();
 

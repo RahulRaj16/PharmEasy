@@ -1,21 +1,31 @@
-package com.example.zerovirus;
+package com.example.zerovirus.Activity;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
-
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
+
+import java.util.ArrayList;
 
 public class PatientsActivity extends AppCompatActivity {
    private static final String TAG = "PatientsActivity";
     private ListView plist;
+    DBHelper dbHelper;
     SQLiteDatabase db;
     private Button add;
     private SearchView editsearch;
@@ -25,6 +35,7 @@ public class PatientsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patients);
         plist = (ListView)findViewById(R.id.listview);
+        dbHelper=new DBHelper(this);
         add = findViewById(R.id.add_patient);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +45,7 @@ public class PatientsActivity extends AppCompatActivity {
             }
         });
 
+        populateListView();
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         editsearch = findViewById(R.id.search_View);
         editsearch.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
@@ -42,6 +54,7 @@ public class PatientsActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 //Toast.makeText(getApplicationContext(),"Failed to Add",Toast.LENGTH_LONG).show();
+                searchPatients(query);
                 return false;
             }
 
@@ -54,4 +67,75 @@ public class PatientsActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
+    private void populateListView(){
+        Log.d(TAG,"populateListView: Displaying data in the ListView. ");
+        Cursor data = dbHelper.getPatient();
+        ArrayList<String> listData = new ArrayList<>();
+
+        while (data.moveToNext()){
+            listData.add(data.getString(1));
+
+        }
+
+        ListAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listData);
+        plist.setAdapter(adapter);
+
+        plist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String name = parent.getItemAtPosition(position).toString();
+                Log.d(TAG,"onItemClick: You Clicked on " + name);
+
+                Cursor data = dbHelper.getPatientID(name);
+                int pID = -1;
+                String address = "", phone = "", diagnosis = "", prescription = "";
+                while (data.moveToNext()){
+                    pID = data.getInt(0);
+                    diagnosis = data.getString(2);
+                    address  = data.getString(3);
+                    phone = data.getString(4);
+                    prescription = data.getString(5);
+
+                }
+                if(pID > -1){
+                    Log.d(TAG,"onItemClick: The Patient ID  " + pID);
+                    Intent editpatient = new Intent(PatientsActivity.this,EditPatientActivity.class);
+                    editpatient.putExtra("id",pID);
+                    editpatient.putExtra("name",name);
+                    editpatient.putExtra("diagnosis",diagnosis);
+                    editpatient.putExtra("address",address);
+                    editpatient.putExtra("phone",phone);
+                    editpatient.putExtra("prescription",prescription);
+                    startActivity(editpatient);
+
+
+                }else {
+                    Toast.makeText(getApplicationContext(),"No record found", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+
+    }
+
+    private void searchPatients(String query){
+        ArrayList<String> lData = new ArrayList<>();
+        Cursor patient = dbHelper.searchPatient(query);
+
+        if(patient.moveToFirst()){
+            do{
+                lData.add(patient.getString(1));
+            }while (patient.moveToNext());
+        }
+        patient.close();
+        ListAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,lData);
+
+        plist.setAdapter(adapter);
+
+    }
 }
