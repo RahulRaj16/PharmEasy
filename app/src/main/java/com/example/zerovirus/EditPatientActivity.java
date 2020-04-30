@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class EditPatientActivity extends AppCompatActivity {
+public class EditPatientActivity extends AppCompatActivit22y {
     private static final String TAG = "EditPatientActivity";
     private Button button_register,button_delete;
     private EditText editname,editmobile,editaddress,editdiag,editpres;
