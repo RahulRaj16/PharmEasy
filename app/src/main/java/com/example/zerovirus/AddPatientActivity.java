@@ -19,6 +19,7 @@ public class AddPatientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_patient);
 
         name = findViewById(R.id.txtpatient);
+        name = findViewById(R.id.txtpatient);
         addrs=findViewById(R.id.txtaddress);
         phone = findViewById(R.id.mobileNo);
         diag= findViewById(R.id.txtdiagnosis);
