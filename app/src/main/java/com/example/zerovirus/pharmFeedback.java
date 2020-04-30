@@ -1,4 +1,4 @@
-package com.example.zerovirus;
+package com.example.zerovirus.Activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,12 +8,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
 
 public class pharmFeedback extends AppCompatActivity {
     EditText textInputName;
     EditText textInputEmail;
     EditText textinputMessage;
     Button buttonsubmit;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,13 @@ public class pharmFeedback extends AppCompatActivity {
         textinputMessage=(EditText)findViewById(R.id.feedback);
         buttonsubmit=(Button)findViewById(R.id.button_feed);
 
+        dbHelper = new DBHelper(this);
+
         buttonsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                addUser();
+
                 Toast.makeText(getApplicationContext(),"Successfully Submitted!", Toast.LENGTH_LONG).show();
 
 
@@ -38,6 +45,17 @@ public class pharmFeedback extends AppCompatActivity {
 
 
 
+    }
+
+
+    private void addUser(){
+
+        String name = textInputName.getText().toString().trim();
+        String mail = textInputEmail.getText().toString().trim();
+        String msg = textinputMessage.getText().toString().trim();
+
+
+        dbHelper.addfeed(name,mail,msg);
     }
 
 

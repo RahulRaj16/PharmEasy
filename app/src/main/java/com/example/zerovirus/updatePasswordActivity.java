@@ -1,12 +1,15 @@
-package com.example.zerovirus;
+package com.example.zerovirus.Activity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.zerovirus.Database.DBHelper;
+import com.example.zerovirus.R;
 
 public class
 
@@ -15,11 +18,12 @@ updatePasswordActivity extends AppCompatActivity {
     EditText textInputNewPassword;
     EditText textInputConfirmPassword;
     Button mButtonUpdate;
-
+    DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_password);
+        dbHelper = new DBHelper(this);
         textInputCurrentPassword = (EditText)findViewById(R.id.current_pw);
         textInputNewPassword = (EditText)findViewById(R.id.new_pw);
         textInputConfirmPassword = (EditText)findViewById(R.id.confirm_pw);
@@ -33,6 +37,7 @@ updatePasswordActivity extends AppCompatActivity {
 
                 if (validatepassword() == true){
                     if (validateNewPassword() == true && validateConfirmPassword() == true){
+                        dbHelper.changepwd(textInputNewPassword.getText().toString().trim());
                         Toast.makeText(getApplicationContext(),"Password Updated", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -51,8 +56,11 @@ private boolean validatepassword(){
         Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
         return false;
     }
-    else {
+    else if (passwordInput.equals(dbHelper.getpwd())){
         return true;
+    }
+    else {
+        return false;
     }
 
 
